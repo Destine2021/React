@@ -4,9 +4,9 @@ class Box extends React.Component {
 
   render() {
     let slider = null;
-    if (this.props.icon != 'local_drink') {
+    if (this.props.icon !== 'local_drink') {
       slider = (
-        <input type="range" id="volume" name="jauge" min="0" max="100"></input>
+        <input type="range"  min= {this.props.min}  max={ this.props.max} onChange={this.props.onChange} value={this.props.value }></input>
       );
     }
     return (

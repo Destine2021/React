@@ -3,7 +3,7 @@ import "./App.css";
 import Box from "./components/Box";
 import "./styles/global.css";
 
-
+const waterMin = 1.5
 const tempMin = -20
 const tempMax = 40
 const heartMin = 80
@@ -24,20 +24,44 @@ class App extends React.Component {
     };
   };
 
+  onHeartChange = (e) => {
+    this.setState({ heart: e.target.value }, this.calculateWater)
+   };
+   onStepsChange = (e) => {
+    this.setState({ steps: e.target.value }, this.calculateWater)
+   };
+   onTemperatureChange = (e) => {
+    this.setState({ temperature: e.target.value }, this.calculateWater)
+   };
+
+  calculateWater = () => {
+    let waterLevel = 1.5;
+    if (this.state.temp > 20) {
+      waterLevel = waterLevel + (this.state.temp - 20) * 0.02;
+    }
+    if (this.state.heart > 120) {
+      waterLevel = waterLevel + (this.state.heart - 120) * 0.0008;
+    }
+    if (this.state.steps > 10000) {
+      waterLevel = waterLevel + (this.state.steps - 10000) * 0.00002;
+    }
+    this.setState({ water: waterLevel });
+  }
+
+
   render() {
     return (
       <div className="container-fluid">
         <div className="row">
 
           {/*<water/>*/}
-          <Box icon="local_drink" color="#3A85FF" value={1.5} unit="L" />
-          
+          <Box icon="local_drink" color="#3A85FF"  value={this.state.water}      unit="L"  />
           {/*<Steps/>*/}
-          <Box icon="directions_walk" color="black" value={3000} unit="steps" />
+          <Box icon="directions_walk" color="black" value= {this.state.steps}   min = {stepMin} max = {stepMax} onChange = {this.onStepsChange} />
           {/*<Heart/>*/}
-          <Box icon="favorite" color="red" value={120} unit="bmp" />
-          {/*<Heart/>*/}
-          <Box icon="wb_sunny" color="yellow" value={-10} unit="°C" />
+          <Box icon="favorite" color="red"  unit="bmp" value= {this.state.heart}   min = {heartMin} max = {heartMax} onChange = {this.onHeartChange}  />
+          {/*<Température/>*/}
+          <Box icon="wb_sunny" color="yellow" value= {this.state.temperature}   min = {tempMin} max = {tempMax} onChange = {this.onTemperatureChange} />
 
         </div>
 
