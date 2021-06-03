@@ -1,4 +1,6 @@
-
+body{
+    background-image:url(./papiers-peints-piste-homme-et-des-athletes-de-terrain-avant-la-course-debut.jpg.jpg);
+}
 .box:nth-child(even) {
     background-color: #cccccc
 };
@@ -9,4 +11,8 @@
     height: 190px;
     padding: 8px; 
     text-align: center;
+    
 };
+#origne{
+  align-content: center;
+}

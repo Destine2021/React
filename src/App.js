@@ -55,13 +55,13 @@ class App extends React.Component {
         <div className="row">
 
           {/*<water/>*/}
-          <Box icon="local_drink" color="#3A85FF"  value={this.state.water}      unit="L"  />
+          <Box icon="local_drink" color="#3A85FF"   unit="L" value={this.state.water} />
           {/*<Steps/>*/}
-          <Box icon="directions_walk" color="black" value= {this.state.steps}   min = {stepMin} max = {stepMax} onChange = {this.onStepsChange} />
+          <Box icon="directions_walk" color="black"  unit="steps" value= {this.state.steps}  min = {stepMin} max = {stepMax} onChange = {this.onStepsChange} />
           {/*<Heart/>*/}
           <Box icon="favorite" color="red"  unit="bmp" value= {this.state.heart}   min = {heartMin} max = {heartMax} onChange = {this.onHeartChange}  />
           {/*<Température/>*/}
-          <Box icon="wb_sunny" color="yellow" value= {this.state.temperature}   min = {tempMin} max = {tempMax} onChange = {this.onTemperatureChange} />
+          <Box icon="wb_sunny" color="yellow" unit="°C"  value= {this.state.temperature}   min = {tempMin} max = {tempMax} onChange = {this.onTemperatureChange} />
 
         </div>
 
